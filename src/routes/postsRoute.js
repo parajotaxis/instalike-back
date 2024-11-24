@@ -5,7 +5,13 @@ import express from "express";
 import multer from "multer";
 
 // Importa funções do controlador de posts para lidar com as rotas
-import { listarPosts, postarNovoPost, uploadImagem } from "../controllers/postsController.js";
+import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost } from "../controllers/postsController.js";
+import cors from "cors";
+
+const corsOptions = {
+    origin: "http//localhost:8000",
+    optionsSuccessStatus: 200
+};
 
 // Configura o armazenamento de arquivos, definindo o diretório de destino
 const storage = multer.diskStorage({
@@ -28,6 +34,7 @@ const upload = multer({ dest: "./uploads" , storage });
 const routes = (app) => {
   // Habilita o parsing de JSON no corpo das requisições
   app.use(express.json());
+  app.use(cors(corsOptions));
 
   // Define a rota para listar todos os posts
   app.get("/posts", listarPosts);
@@ -37,7 +44,9 @@ const routes = (app) => {
 
   // Define a rota para fazer upload de uma imagem
   app.post("/upload", upload.single("imagem"), uploadImagem);
-}
+
+  app.put("/upload/:id", atualizarNovoPost);
+};
 
 // Exporta a função de rotas para ser utilizada em outros módulos
 export default routes;
