@@ -46,7 +46,7 @@ export async function atualizarNovoPost(req, res) {
     try {
         
         const imgBuffer = fs.readFileSync(`uploads/${id}.png`);
-        const descricao = await gerarDescricaoComGemini(imgBuffer);
+        const descricao = "Gemini é uma merda. Dano RATE_REQUEST"; //await gerarDescricaoComGemini(imgBuffer);
 
         const post = {
             imgUrl: urlImagem,
