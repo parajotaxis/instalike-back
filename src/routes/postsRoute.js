@@ -9,7 +9,7 @@ import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost } from "..
 import cors from "cors";
 
 const corsOptions = {
-    origin: "http//localhost:8000",
+    origin: "http://localhost:8000",
     optionsSuccessStatus: 200
 };
 
