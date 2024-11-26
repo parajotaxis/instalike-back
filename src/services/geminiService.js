@@ -19,5 +19,7 @@ export default async function gerarDescricaoComGemini(imageBuffer) {
   } catch (erro) {
     console.error("Erro ao obter alt-text:", erro.message, erro);
     throw new Error("Erro ao obter o alt-text do Gemini.");
+    const res = "Alt-text não disponível.";
+    return  res;
   }
 }
